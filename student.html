@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <title>
+        Student Page
+    </title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btnSubmit").click(function () {
+                var requestData = {
+                    number: $('#inputNo').val()
+                }
+
+                $.post('http://localhost:3000/compareNumber', requestData, function (data) {
+                    document.getElementById("msg").innerHTML = data.msg;
+                    //document.getElementById("no").innerHTML = data.input;
+                });
+
+            });
+        });
+    </script>
+
+
+    <style>
+        .jumbotron {
+            background-color: rgb(0, 127, 163);
+        }
+
+        .footercls {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            text-align: center;
+            font-weight: bold;
+            background-color: rgb(0, 127, 163);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1 style="color: white"><strong>STUDENT</strong></h1>
+        </div>
+        <div class="jumbotron text-center">
+            <p><b>Enter the Appropriate Number Here.</b></p>
+            <input class="inputcls " type="text" name="inputNo" id="inputNo"
+                style="height: 50px;font-size: 25px;width: 200px;text-align: center" onfocus="this.value=''"
+                autocomplete="off"><br>
+            <p id="errmsg" style="color: white"><b></b></p>
+            <button class="btn btn-danger" id="btnSubmit" type="button" style="margin-top: 10px;">Submit</button>
+        </div>
+        <h1 class="text-center" id="msg" style="font-size: 50px; color: green;"></h1>
+
+    </div>
+    </div>
+    <!--<h1 id="no"></h1>-->
+    <footer>
+        <div class="footercls">
+            <p style="margin-top: 20px;">Copyrights &copy; Pearson.com 2019.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

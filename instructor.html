@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <title>
+        Instructor Page
+    </title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect();
+        socket.on('message', function (data) {
+            console.log(data.number);
+            document.getElementById("number").innerHTML = data.number;
+        });
+    </script>
+    <style>
+        .jumbotron {
+            background-color: rgb(0, 127, 163);
+        }
+
+        #number {
+            margin-top: 100px;
+        }
+
+        .footercls {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            text-align: center;
+            font-weight: bold;
+            background-color: rgb(0, 127, 163);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1 style="color: white"><strong>INSTRUCTOR</strong></h1>
+        </div>
+        <p class="text-center" id="number" style="font-size: 80px;"></p>
+    </div>
+    <footer>
+        <div class="footercls">
+            <p style="margin-top: 20px;">Copyrights &copy; Pearson.com 2019.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
